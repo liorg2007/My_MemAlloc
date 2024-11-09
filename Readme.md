@@ -1,5 +1,5 @@
-# Custome Memory Allocator
-A custome C implementation of malloc and free
+# Custom Memory Allocator
+A custom C implementation of malloc and free
 
 # Basic Methodology
 Given a fixed sized memory pool handle allocation and de-allcatio of memory blocks.
