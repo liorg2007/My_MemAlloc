@@ -17,7 +17,10 @@ void *my_malloc(size_t size) {
     struct mem_block new_block;
 
     // Search for the first free block with enough size
-    while ((char*) block < mem_pool + MEMORY_SIZE && (!block->is_free || block->size < size)) {
+    while ((char*) block < mem_pool + MEMORY_SIZE) {
+        if (block->is_free && block->size >= size) {
+            break; // found a suitable block
+        }
         block = ( struct mem_block *)((char *)block + block->size + sizeof(struct mem_block));
     }
 
@@ -38,6 +41,21 @@ void *my_malloc(size_t size) {
     }
 
     return (char *)block + sizeof(struct mem_block);
+}
+
+void my_free(void *ptr) {
+    struct mem_block *block = mem_pool;
+
+    if ((char*)block >= mem_pool + MEMORY_SIZE)
+        return;
+
+    while ((char*)block < (char*)ptr) {
+        if ((char *)block  == (char *)ptr - sizeof(struct mem_block)) {
+            block->is_free = true;
+            return;
+        }
+        block = (struct mem_block *)((char *)block + block->size + sizeof(struct mem_block));
+    }
 }
 
 void print_memory() {

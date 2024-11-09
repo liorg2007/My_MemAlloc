@@ -28,3 +28,7 @@ The way to implement a malloc is very straight forward:
 4. Set the new block size to: Previous_Block_Size - alloc_size - sizeof(mem_block)
 
 In case the memory is full, return a null pointer.
+
+## Free Implementation 
+### The easy way
+The easiest way to free a memory block is simple, search for the given pointer in memory and mark it free.
