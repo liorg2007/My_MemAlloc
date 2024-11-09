@@ -49,7 +49,9 @@ void my_free(void *ptr) {
     if ((char*)block >= mem_pool + MEMORY_SIZE)
         return;
 
+    // Search for the correct block
     while ((char*)block < (char*)ptr) {
+        // Check if the current block is the desired free destination
         if ((char *)block  == (char *)ptr - sizeof(struct mem_block)) {
             block->is_free = true;
             return;
