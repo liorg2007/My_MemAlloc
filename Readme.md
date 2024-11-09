@@ -14,3 +14,7 @@ void my_free(void *ptr) // Free a block of memory
 A metadata of a block sits right at the start of it:
 ``` DATA-BLOCK-DATA-BLOCK-DATA...```.
 A metadata section will contain the size of a block and an is_free flag.
+
+## Implementation
+
+Of course before we start allocation memory we need to initialize the memory space. The initialization is easy, just initialzie the first metadata block.
