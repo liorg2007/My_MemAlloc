@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdio.h>
 
 struct mem_block {
     size_t size;
@@ -10,3 +11,4 @@ struct mem_block {
 void *init_mem();
 void *my_malloc(size_t size); // Allocate a block of memory
 void my_free(void *ptr); // Free a block of memory
+void print_memory();
